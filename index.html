@@ -8,336 +8,353 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, h5, h6, .logo-text { font-family: 'Merriweather', serif; }
+        
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-button.active + .accordion-content { max-height: 800px; transition: max-height 0.5s ease-in; }
+        .accordion-button .arrow { transition: transform 0.3s ease-out; }
+        .accordion-button.active .arrow { transform: rotate(180deg); }
+        
+        .bg-neural { 
+            background: linear-gradient(135deg, #00314C 0%, #001a29 100%); 
+            position: relative; 
         }
-        h1, h2, h3, h4, h5, h6, .logo-text {
-            font-family: 'Merriweather', serif;
+        .bg-neural::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
         }
-        /* Accordion Custom Styles */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .accordion-button.active + .accordion-content {
-            max-height: 800px;
-            transition: max-height 0.5s ease-in;
-        }
-        .accordion-button .arrow {
-            transition: transform 0.3s ease-out;
-        }
-        .accordion-button.active .arrow {
-            transform: rotate(180deg);
-        }
-        .bg-neural {
-            background: linear-gradient(135deg, #00314C 0%, #001a29 100%);
-        }
-        /* Modal Styles */
+
+        /* Testimonial Carousel Styles */
+        .testimonial-slide { display: none; }
+        .testimonial-slide.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         #legalModal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
+            display: none; position: fixed; z-index: 100; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
         }
         .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 40px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
+            background-color: #fff; margin: 5% auto; padding: 40px; border-radius: 20px;
+            width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; position: relative;
         }
-        .close-modal {
-            position: absolute;
-            right: 20px; top: 15px;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #333;
-        }
-        /* Process Step Decoration */
-        @media (min-width: 768px) {
-            .step-arrow::after {
-                content: '';
-                position: absolute;
-                right: -2rem;
-                top: 30%;
-                width: 3rem;
-                height: 2px;
-                background: repeating-linear-gradient(to right, #00314C 0, #00314C 5px, transparent 5px, transparent 10px);
-                z-index: 1;
-            }
-        }
+        .close-modal { position: absolute; right: 25px; top: 20px; font-size: 32px; font-weight: bold; cursor: pointer; color: #999; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-white text-black text-lg">
+<body class="bg-white text-slate-900 text-lg antialiased">
 
     <!-- HEADER -->
-    <header class="bg-black text-white py-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-4 flex justify-center items-center">
-            <span class="logo-text text-2xl md:text-3xl font-black tracking-tighter uppercase">
-                <span class="text-white">MEMO</span> <span class="text-[#005a8b]">Genesis</span>
+    <header class="bg-black text-white py-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <span class="logo-text text-xl md:text-2xl font-black tracking-tighter uppercase">
+                MEMO <span class="text-[#005a8b]">Genesis</span>
             </span>
+            <div class="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-400">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Authorized Distributor
+            </div>
         </div>
     </header>
 
     <!-- PROMO BAR -->
-    <section class="py-4 px-4 bg-gradient-to-r from-[#00314C] to-[#005a8b] text-white">
-        <div class="max-w-4xl mx-auto flex flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 text-center">
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    <section class="py-3 px-4 bg-gradient-to-r from-[#00314C] to-[#005a8b] text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-row items-center justify-center gap-x-8 text-center">
+            <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.64.304 1.25.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
-                <p class="text-lg md:text-xl font-bold italic">Save $780 — Today Only!</p>
+                <p class="text-sm md:text-base font-extrabold uppercase tracking-tight">Save $780 Today Only!</p>
             </div>
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            <div class="hidden sm:flex items-center gap-2 border-l border-white/20 pl-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                 </svg>
-                <p class="text-lg md:text-xl font-bold">60-Day Money-Back Guarantee</p>
+                <p class="text-sm md:text-base font-extrabold uppercase tracking-tight">60-Day Guarantee</p>
             </div>
         </div>
     </section>
 
     <!-- HERO SECTION -->
-    <main class="px-4 py-12 md:py-20 max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+    <main class="px-4 py-12 md:py-24 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-12 lg:gap-20">
             
-            <!-- Imagem: Desktop View (Lado Esquerdo) -->
-            <div class="hidden md:block md:w-5/12">
-                <img src="images/memogenesis.png" alt="MEMO Genesis Bottle Desktop" class="w-full drop-shadow-2xl" />
+            <!-- Imagem: Desktop Only Position -->
+            <div class="hidden md:block md:w-5/12 sticky top-32">
+                <img src="images/memogenesis.png" alt="MEMO Genesis Premium Bottle" class="w-full drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]" />
             </div>
 
-            <!-- Bloco de Conteúdo -->
+            <!-- Content Block -->
             <div class="flex-1 text-center md:text-left">
-                <!-- Título: Sempre primeiro -->
-                <h1 class="text-[1.8rem] md:text-[3rem] font-extrabold mb-6 leading-tight tracking-tight text-slate-900">
-                    Why More People Over 40 Are Quietly Losing Their Memory… <span class="text-[#00314C]">Without Realizing It</span>
+                <div class="inline-block bg-blue-50 text-[#00314C] px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-blue-100">
+                    Neural Efficiency Formula
+                </div>
+                <h1 class="text-[2.2rem] md:text-[3.5rem] font-extrabold mb-6 leading-[1.1] tracking-tighter text-slate-900">
+                    Why More People Over 40 Are Quietly Losing Their <span class="text-[#00314C]">Memory…</span>
                 </h1>
                 
                 <!-- Imagem Mobile: Exatamente após o título -->
-                <div class="md:hidden w-full max-w-[280px] mx-auto mb-8">
-                    <img src="images/memogenesis.png" alt="MEMO Genesis Bottle Mobile" class="w-full drop-shadow-2xl" />
+                <div class="md:hidden w-full max-w-[300px] mx-auto mb-10">
+                    <img src="images/memogenesis.png" alt="MEMO Genesis Mobile" class="w-full drop-shadow-2xl" />
                 </div>
 
-                <div class="space-y-6 text-xl text-gray-800 leading-relaxed">
-                    <p class="font-medium italic text-gray-600">It doesn’t happen all at once. It starts small. A forgotten name. A missed detail. A moment of confusion.</p>
-                    <p>At first, it feels harmless. But over time… those small moments begin to stack. You start second-guessing yourself. And slowly… Your confidence begins to fade.</p>
+                <div class="space-y-6 text-xl text-slate-600 leading-relaxed font-medium">
+                    <p class="italic">It doesn’t happen all at once. It starts small. A forgotten name. A missed detail. A moment of confusion.</p>
+                    <p>At first, it feels harmless. But over time… those small moments begin to stack. You start second-guessing yourself. <strong>And slowly… Your confidence begins to fade.</strong></p>
                 </div>
 
-                <!-- Bloco de Oferta e Selos Alinhados -->
-                <div class="mt-10 text-center bg-blue-50 p-8 rounded-3xl border border-blue-100 shadow-sm">
-                    <div class="flex items-baseline justify-center gap-3">
-                        <span class="text-5xl font-black text-[#00314C]">$49</span>
-                        <span class="text-xl font-semibold text-gray-400 line-through">$99</span>
+                <!-- Price Block -->
+                <div class="mt-12 text-center bg-white p-10 rounded-[2.5rem] border-2 border-blue-50 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col items-center gap-2 mb-8">
+                        <span class="text-sm font-bold text-slate-400 line-through">Regular Price: $99</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-6xl font-black text-[#00314C]">$49</span>
+                        </div>
                     </div>
-                    <a href="https://myblogshop.top/r/WxlcMrye/s" class="mt-6 bg-green-600 text-white px-10 py-5 rounded-lg flex items-center justify-center gap-2 font-bold text-xl hover:bg-green-700 shadow-xl transition-all transform hover:scale-105">
+                    
+                    <a href="https://myblogshop.top/r/WxlcMrye/s" class="group relative bg-green-600 text-white px-10 py-6 rounded-2xl flex items-center justify-center gap-3 font-black text-2xl hover:bg-green-700 shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 w-full">
                         GET YOUR DISCOUNT NOW
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                     </a>
-                    
-                    <!-- Selos Coloridos na Mesma Linha -->
-                    <div class="mt-8 flex justify-center items-center gap-3 md:gap-5 border-t border-blue-100 pt-6 overflow-x-auto scrollbar-hide">
-                        <img src="images/imgi_10_foreign.png" alt="USA Formula" class="h-10 md:h-14 w-auto flex-shrink-0">
-                        <img src="images/imgi_8_fda.png" alt="FDA Registered" class="h-10 md:h-14 w-auto flex-shrink-0">
-                        <img src="images/imgi_7_gmp.png" alt="GMP Practice" class="h-10 md:h-14 w-auto flex-shrink-0">
-                        <img src="images/imgi_9_nat.png" alt="100% Natural" class="h-10 md:h-14 w-auto flex-shrink-0">
-                        <img src="images/imgi_11_gmo.png" alt="GMO Free" class="h-10 md:h-14 w-auto flex-shrink-0">
+
+                    <!-- Quality Seals -->
+                    <div class="mt-10 flex justify-center items-center gap-4 md:gap-6 border-t border-slate-100 pt-8 overflow-x-auto scrollbar-hide">
+                        <img src="images/imgi_10_foreign.png" alt="USA" class="h-12 md:h-16 w-auto flex-shrink-0">
+                        <img src="images/imgi_8_fda.png" alt="FDA" class="h-12 md:h-16 w-auto flex-shrink-0">
+                        <img src="images/imgi_7_gmp.png" alt="GMP" class="h-12 md:h-16 w-auto flex-shrink-0">
+                        <img src="images/imgi_9_nat.png" alt="Natural" class="h-12 md:h-16 w-auto flex-shrink-0">
+                        <img src="images/imgi_11_gmo.png" alt="GMO" class="h-12 md:h-16 w-auto flex-shrink-0">
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- NETWORK SECTION -->
-    <section class="bg-neural text-white py-20 px-4">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 space-y-6 text-center md:text-left">
-                <h2 class="text-3xl md:text-5xl font-bold leading-tight">Think of your brain like a network.</h2>
-                <p class="text-xl text-blue-100">Every thought and memory relies on how well signals travel. When signals flow properly, you recall things easily and stay focused.</p>
-                <p class="text-xl text-blue-200">But when signals weaken, you notice: Mental fog and slower thinking. <strong>It’s a breakdown in communication, not just aging.</strong></p>
+    <!-- NEW SECTION: DISCOVERY -->
+    <section class="py-24 px-4 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="bg-red-600 text-white px-6 py-1 rounded-full text-xs font-black uppercase tracking-[0.2em] inline-block mb-8">Major Discovery</div>
+            <h2 class="text-3xl md:text-5xl font-black mb-10 leading-tight tracking-tight">Recent research suggests something most people have never been told.</h2>
+            <p class="text-xl md:text-2xl text-slate-300 font-light mb-12">Memory issues may not be caused by age alone… but by something called:</p>
+            <div class="bg-white/10 p-10 rounded-[3rem] border border-white/20 backdrop-blur-md inline-block">
+                <span class="block text-4xl md:text-6xl font-black text-blue-400 uppercase tracking-tighter mb-4 italic">“Neural Signal Breakdown”</span>
+                <p class="text-lg text-slate-200">A gradual slowdown in how your brain cells communicate and stay energized.</p>
             </div>
-            <div class="md:w-1/2 grid grid-cols-2 gap-4 w-full">
-                <div class="bg-white/10 p-6 rounded-2xl border border-white/20 text-center">
-                    <span class="block text-2xl font-black mb-1 text-blue-200 uppercase">Recall</span>
-                    <span class="text-xs text-blue-400 uppercase tracking-widest">Memory</span>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <h5 class="text-blue-300 font-black mb-2 uppercase text-sm">Struggle to</h5>
+                    <p class="text-xl font-bold uppercase">Store Info</p>
                 </div>
-                <div class="bg-white/10 p-6 rounded-2xl border border-white/20 text-center">
-                    <span class="block text-2xl font-black mb-1 text-blue-200 uppercase">Clarity</span>
-                    <span class="text-xs text-blue-400 uppercase tracking-widest">Neural</span>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <h5 class="text-blue-300 font-black mb-2 uppercase text-sm">Struggle to</h5>
+                    <p class="text-xl font-bold uppercase">Recall Memory</p>
+                </div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <h5 class="text-blue-300 font-black mb-2 uppercase text-sm">Struggle to</h5>
+                    <p class="text-xl font-bold uppercase">Maintain Focus</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- JAMES STORY -->
-    <section class="bg-white py-20 px-4">
-        <div class="max-w-5xl mx-auto bg-blue-50 rounded-[2rem] md:rounded-[3rem] shadow-xl overflow-hidden flex flex-col md:flex-row items-center border border-blue-100">
-            <div class="md:w-1/3 h-[350px] md:h-auto self-stretch">
-                <img src="images/james.png" alt="James holding MemoGenesis" class="w-full h-full object-cover object-top">
+    <!-- BRAIN NETWORK SECTION -->
+    <section class="bg-neural text-white py-24 px-4 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
+            <div class="md:w-1/2 space-y-8 text-center md:text-left">
+                <h2 class="text-4xl md:text-6xl font-black leading-none tracking-tighter uppercase">Your brain is a <span class="text-blue-400">Network.</span></h2>
+                <p class="text-xl text-blue-100 opacity-90 leading-relaxed font-light">Every thought… every memory… every decision… depends on signals traveling efficiently.</p>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-lg">
+                    <div class="flex items-center gap-4 mb-4 text-green-400">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="text-xl font-black uppercase tracking-tight">When signals are strong</span>
+                    </div>
+                    <p class="text-lg text-slate-300">You think clearly. You remember easily.</p>
+                </div>
             </div>
-            <div class="md:w-2/3 p-8 md:p-12 lg:p-16 text-center md:text-left">
-                <div class="flex justify-center md:justify-start text-yellow-500 mb-4 text-xl">★★★★★</div>
-                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900 leading-tight">“I felt like I was losing my sharpness.”</h3>
-                <p class="text-lg text-gray-700 italic leading-relaxed mb-6">
-                    "James, 61, started noticing small memory lapses that affected his confidence. 'I felt like I wasn’t fully present anymore.' After supporting his cognitive health with MemoGenesis, he noticed a gradual return to his old self. <strong>'It wasn’t overnight, but I started feeling clearer and more like myself again.'</strong>"
-                </p>
-                <p class="font-black text-slate-900 uppercase tracking-widest text-xs">James R., 61 — Retired Professional</p>
+            <div class="md:w-1/2 space-y-6">
+                <div class="p-8 bg-red-600/10 rounded-3xl border border-red-500/20 backdrop-blur-md">
+                    <p class="text-xl text-red-200 font-bold mb-4 italic">"But when signals weaken… messages get delayed. Distorted. Or lost."</p>
+                    <p class="text-slate-300">That’s when people notice: mental fog, slower thinking, and difficulty recalling simple things.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SCIENTIFIC REFERENCES -->
-    <section class="bg-gray-50 py-16 px-4 text-center">
+    <!-- INGREDIENTS SECTION (Simplified) -->
+    <section class="py-20 px-4 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-16 uppercase tracking-tighter">Pure Ingredients. Focused Results.</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-[#00314C] transition-all">
+                    <h5 class="font-black text-[#00314C] text-lg uppercase tracking-widest">Neuro-Nutrients</h5>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-[#00314C] transition-all">
+                    <h5 class="font-black text-[#00314C] text-lg uppercase tracking-widest">Cellular Energy</h5>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-[#00314C] transition-all">
+                    <h5 class="font-black text-[#00314C] text-lg uppercase tracking-widest">Pathway Clarity</h5>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-[#00314C] transition-all">
+                    <h5 class="font-black text-[#00314C] text-lg uppercase tracking-widest">Antioxidants</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: AUTO-CAROUSEL TESTIMONIALS -->
+    <section class="py-24 px-4 bg-white relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 uppercase tracking-tighter italic">Proof of Performance</h2>
+                <p class="text-slate-500 font-bold uppercase tracking-widest text-xs">Real Users. Real Experiences.</p>
+            </div>
+
+            <div class="relative bg-slate-50 p-8 md:p-16 rounded-[3rem] shadow-xl border border-slate-100">
+                <!-- Slide 1: James -->
+                <div class="testimonial-slide active">
+                    <div class="flex justify-center text-yellow-500 mb-6 text-2xl">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight mb-8">“I felt like I was losing my sharpness.”</blockquote>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed italic">“I started forgetting small things. At first, I ignored it… but it got worse. After a few weeks of MemoGenesis, I felt more clear… more like myself again.”</p>
+                    <cite class="not-italic font-black text-[#00314C] uppercase tracking-widest text-sm">— James, 61 (Retired Professional)</cite>
+                </div>
+
+                <!-- Slide 2: Linda -->
+                <div class="testimonial-slide">
+                    <div class="flex justify-center text-yellow-500 mb-6 text-2xl">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight mb-8">“The brain fog was the worst part.”</blockquote>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed italic">“I didn’t realize how much it was affecting me until it started improving. I feel more present now in every conversation.”</p>
+                    <cite class="not-italic font-black text-[#00314C] uppercase tracking-widest text-sm">— Linda, 58</cite>
+                </div>
+
+                <!-- Slide 3: Michael -->
+                <div class="testimonial-slide">
+                    <div class="flex justify-center text-yellow-500 mb-6 text-2xl">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight mb-8">“I can focus again.”</blockquote>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed italic">“It’s not a miracle… but the difference is noticeable. I feel sharper during the day and less exhausted at night.”</p>
+                    <cite class="not-italic font-black text-[#00314C] uppercase tracking-widest text-sm">— Michael, 64</cite>
+                </div>
+
+                <!-- Slide 4: Carol -->
+                <div class="testimonial-slide">
+                    <div class="flex justify-center text-yellow-500 mb-6 text-2xl">⭐⭐⭐⭐⭐</div>
+                    <blockquote class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight mb-8">“Subtle but real changes.”</blockquote>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed italic">“I feel more organized mentally. Less scattered. My daily routine just flows better without that heavy feeling.”</p>
+                    <cite class="not-italic font-black text-[#00314C] uppercase tracking-widest text-sm">— Carol, 55</cite>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="mt-12 flex justify-center gap-2">
+                    <div class="dot w-3 h-3 rounded-full bg-[#00314C] opacity-100 transition-all cursor-pointer"></div>
+                    <div class="dot w-3 h-3 rounded-full bg-slate-300 transition-all cursor-pointer"></div>
+                    <div class="dot w-3 h-3 rounded-full bg-slate-300 transition-all cursor-pointer"></div>
+                    <div class="dot w-3 h-3 rounded-full bg-slate-300 transition-all cursor-pointer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCIENTIFIC ANGLE -->
+    <section class="bg-slate-50 py-24 px-4 text-center border-y border-slate-200">
         <div class="max-w-4xl mx-auto">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 uppercase tracking-widest">Scientific References:</h3>
-            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">Cognitive performance depends on how well your brain systems work together. When those systems slow down, everything else follows.</p>
-            <div class="flex justify-center">
-                <img src="images/scientific-references.webp" alt="Scientific References" class="w-full max-w-4xl object-contain drop-shadow-md rounded-lg">
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-8 uppercase tracking-widest">Why Focus on Communication?</h3>
+            <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto font-medium">Cognitive performance depends on how well brain systems work together. And when communication weakens… everything else follows.</p>
+            <div class="flex justify-center bg-white p-4 rounded-2xl shadow-inner border border-slate-200">
+                <img src="images/scientific-references.webp" alt="Scientific Data" class="w-full max-w-4xl object-contain rounded-lg">
             </div>
         </div>
     </section>
 
-    <!-- NEW 3-STEP STRATEGY DESIGN -->
-    <section class="py-24 px-4 bg-white overflow-hidden">
+    <!-- 3-STEP STRATEGY -->
+    <section class="py-24 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl md:text-4xl font-black text-white bg-[#00314C] py-4 px-12 inline-block rounded-xl mb-6 uppercase tracking-tighter shadow-xl">
-                    The 3-Step MemoGenesis Strategy
-                </h2>
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 uppercase tracking-tighter">The Strategy</h2>
+                <div class="w-24 h-2 bg-[#00314C] mx-auto rounded-full"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 relative">
-                <!-- Step 1 -->
-                <div class="relative bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 shadow-sm flex flex-col items-center text-center step-arrow group hover:bg-[#00314C] transition-all duration-300">
-                    <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-8 border-4 border-blue-50 group-hover:scale-110 transition-transform">
-                        <span class="text-4xl font-black text-[#00314C]">1</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-[#00314C] group-hover:text-white transition-colors">Support</h4>
-                    <p class="text-gray-600 group-hover:text-blue-100 leading-relaxed transition-colors">Nourishes foundational brain function through targeted cellular support at the source.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-[#00314C] text-white rounded-2xl flex items-center justify-center mb-8 font-black text-3xl">1</div>
+                    <h4 class="text-xl font-black mb-4 text-[#00314C] uppercase">Support</h4>
+                    <p class="text-slate-500 text-sm">Helps nourish essential brain functions at the source.</p>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="relative bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 shadow-sm flex flex-col items-center text-center step-arrow group hover:bg-[#00314C] transition-all duration-300">
-                    <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-8 border-4 border-blue-50 group-hover:scale-110 transition-transform">
-                        <span class="text-4xl font-black text-[#00314C]">2</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-[#00314C] group-hover:text-white transition-colors">Optimize</h4>
-                    <p class="text-gray-600 group-hover:text-blue-100 leading-relaxed transition-colors">Strengthens communication pathways for better focus and neural flow.</p>
+                <div class="bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-[#00314C] text-white rounded-2xl flex items-center justify-center mb-8 font-black text-3xl">2</div>
+                    <h4 class="text-xl font-black mb-4 text-[#00314C] uppercase">Optimize</h4>
+                    <p class="text-slate-500 text-sm">Supports communication pathways for better clarity.</p>
                 </div>
-
-                <!-- Step 3 -->
-                <div class="relative bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 shadow-sm flex flex-col items-center text-center group hover:bg-[#00314C] transition-all duration-300">
-                    <div class="w-20 h-20 bg-white shadow-lg rounded-full flex items-center justify-center mb-8 border-4 border-blue-50 group-hover:scale-110 transition-transform">
-                        <span class="text-4xl font-black text-[#00314C]">3</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4 text-[#00314C] group-hover:text-white transition-colors">Maintain</h4>
-                    <p class="text-gray-600 group-hover:text-blue-100 leading-relaxed transition-colors">Protects long-term cognitive performance and mental independence for years to come.</p>
+                <div class="bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-[#00314C] text-white rounded-2xl flex items-center justify-center mb-8 font-black text-3xl">3</div>
+                    <h4 class="text-xl font-black mb-4 text-[#00314C] uppercase">Maintain</h4>
+                    <p class="text-slate-500 text-sm">Supports long-term cognitive performance and resilience.</p>
                 </div>
-            </div>
-
-            <div class="mt-20 text-center">
-                <p class="text-2xl md:text-3xl font-black text-[#00314C] italic max-w-4xl mx-auto leading-tight">
-                    "Because when your brain works better internally… everything feels easier externally."
-                </p>
             </div>
         </div>
     </section>
 
     <!-- GUARANTEE -->
-    <section class="bg-gray-100 py-20 px-4">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
-            <div class="w-32 md:w-44 flex-shrink-0">
-                <img src="images/imgi_6_guarantee-badge.png" alt="Guarantee" class="w-full drop-shadow-xl" />
+    <section class="bg-[#F1F5F9] py-20 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left bg-white p-10 md:p-16 rounded-[4rem] shadow-xl border border-slate-100">
+            <div class="w-40 md:w-56 flex-shrink-0">
+                <img src="images/imgi_6_guarantee-badge.png" alt="60 Day Guarantee" class="w-full drop-shadow-2xl" />
             </div>
             <div class="flex-1">
-                <h2 class="text-2xl md:text-3xl font-bold text-[#00314C] mb-6 italic uppercase">Protected by Our 60-Day Guarantee</h2>
-                <p class="text-xl text-gray-800 leading-relaxed mb-8">
-                    You don’t need to guess if this is right for you. Try MemoGenesis as part of your daily routine. If you’re not satisfied, request a full refund within 60 days. No pressure. No risk.
-                </p>
-                <a href="https://myblogshop.top/r/WxlcMrye/s" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-black px-12 py-5 rounded-lg shadow-lg text-xl uppercase tracking-tighter transition-all hover:scale-105">
-                    Order with 100% Security
+                <h2 class="text-3xl font-black text-[#00314C] mb-6 italic uppercase tracking-tighter leading-tight">Protected by our <br>60-Day Guarantee</h2>
+                <p class="text-xl text-slate-600 mb-8 font-medium">Try MemoGenesis for yourself. If you’re not satisfied for any reason, request a full refund within 60 days. No pressure. No risk.</p>
+                <a href="https://myblogshop.top/r/WxlcMrye/s" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-black px-12 py-5 rounded-2xl shadow-lg uppercase transition-all hover:scale-105">
+                    Order Risk-Free Now
                 </a>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="bg-white py-20 px-4">
+    <section class="bg-white py-24 px-4">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12 text-[#00314C]">Common Questions</h2>
-            <div class="space-y-4">
-                <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
-                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>Is MemoGenesis safe for daily use?</span>
-                        <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <h2 class="text-4xl font-black text-center mb-16 text-slate-900 uppercase tracking-tighter">Questions</h2>
+            <div class="space-y-6 text-left">
+                <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 overflow-hidden">
+                    <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
+                        <span class="text-[#00314C]">Is MemoGenesis safe for daily use?</span>
+                        <svg class="arrow w-6 h-6 text-[#00314C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">MemoGenesis is designed with carefully selected ingredients and produced under strict quality standards to ensure a safe experience for consistent daily use.</p>
-                    </div>
+                    <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100">Designed with carefully selected ingredients and produced under strict standards for consistent daily use.</p></div>
                 </div>
-                <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
-                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>How long does it take to notice results?</span>
-                        <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 overflow-hidden">
+                    <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
+                        <span class="text-[#00314C]">How long does it take?</span>
+                        <svg class="arrow w-6 h-6 text-[#00314C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Many users report gradual improvements in clarity and memory sharpness with consistent use over time. Results build foundational support starting in the first month.</p>
-                    </div>
-                </div>
-                <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
-                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>How should I take MemoGenesis?</span>
-                        <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Simply follow the daily instructions included with your order. One capsule with water each morning is typically recommended.</p>
-                    </div>
-                </div>
-                <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
-                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>Is this a one-time purchase?</span>
-                        <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Yes. No subscriptions, recurring charges, or hidden fees. You will only be billed for what you order today.</p>
-                    </div>
+                    <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100">Many users report gradual improvements over time. The formula works cumulatively to support neural pathways.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FINAL CTA -->
-    <section class="bg-neural py-24 px-4 text-center text-white">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl md:text-6xl font-black mb-10 uppercase tracking-tighter leading-tight">DON’T WAIT FOR THE SIGNALS TO GET LOUDER.</h2>
-            <img src="images/memogenesis.png" alt="Offer Bundle" class="mx-auto w-72 mb-12 drop-shadow-2xl">
-            <a href="https://myblogshop.top/r/WxlcMrye/s" class="bg-green-600 hover:bg-green-700 text-white font-black px-12 py-7 rounded-full text-2xl shadow-2xl inline-flex items-center gap-4 transform hover:scale-110 transition-all uppercase tracking-tight">
+    <section class="bg-neural py-32 px-4 text-center text-white">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl md:text-7xl font-black mb-8 uppercase tracking-tighter leading-[0.9]">DON’T WAIT FOR THE SIGNALS TO GET LOUDER.</h2>
+            <p class="text-xl md:text-2xl text-blue-100 mb-12 max-w-2xl mx-auto">Small changes don’t stay small forever. The earlier you support your brain… the better it can support you.</p>
+            <div class="relative inline-block mb-16">
+                <img src="images/memogenesis.png" alt="MemoGenesis Bundle" class="w-80 md:w-96 drop-shadow-2xl">
+                <div class="absolute -bottom-6 -right-6 bg-yellow-400 text-black px-6 py-3 rounded-2xl font-black text-xl shadow-xl transform rotate-3 italic">SAVE $780</div>
+            </div>
+            <br>
+            <a href="https://myblogshop.top/r/WxlcMrye/s" class="inline-flex bg-green-600 hover:bg-green-700 text-white font-black px-16 py-8 rounded-[2rem] text-3xl shadow-2xl transition-all transform hover:scale-110 uppercase tracking-tighter">
                 ORDER MEMOGENESIS NOW
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
             </a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 text-gray-500 py-16 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-xs mb-6 uppercase tracking-widest text-gray-600 font-bold">Authorized Distributor of MemoGenesis™</p>
-            <div class="flex flex-wrap justify-center gap-6 mb-10 text-xs uppercase tracking-widest font-black">
+    <footer class="bg-slate-950 text-slate-500 py-20 px-4 text-center">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-wrap justify-center gap-8 mb-16 text-xs uppercase tracking-widest font-black">
                 <a href="javascript:void(0)" onclick="openLegal('privacy')" class="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="javascript:void(0)" onclick="openLegal('disclaimer')" class="hover:text-white transition-colors">Disclaimer</a>
                 <a href="javascript:void(0)" onclick="openLegal('terms')" class="hover:text-white transition-colors">Terms & Conditions</a>
@@ -345,36 +362,34 @@
                 <a href="javascript:void(0)" onclick="openLegal('shipping')" class="hover:text-white transition-colors">Shipping Policy</a>
                 <a href="javascript:void(0)" onclick="openLegal('contact')" class="hover:text-white transition-colors">Contact</a>
             </div>
-            <p class="mb-8 text-sm">&copy; 2025 MEMO Genesis. All Rights Reserved.</p>
-            <p class="text-[10px] leading-relaxed text-gray-700 text-justify border-t border-gray-900 pt-8 mt-8">
-                † Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease. Always consult your physician before using our products.
-            </p>
+            <p class="mb-10 text-sm">&copy; 2025 MEMO Genesis. All Rights Reserved.</p>
+            <p class="text-[10px] leading-relaxed text-slate-700 text-justify border-t border-slate-900 pt-10">† Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease.</p>
         </div>
     </footer>
 
     <!-- LEGAL MODAL -->
-    <div id="legalModal">
-        <div class="modal-content">
+    <div id="legalModal" onclick="closeLegal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeLegal()">&times;</span>
-            <div id="modalTitle" class="text-2xl font-bold mb-6 text-[#00314C]"></div>
-            <div id="modalBody" class="text-sm leading-relaxed text-gray-800 space-y-4 text-left"></div>
+            <div id="modalTitle" class="text-3xl font-black mb-8 text-[#00314C] uppercase tracking-tighter"></div>
+            <div id="modalBody" class="text-base leading-relaxed text-slate-700 space-y-6 text-left"></div>
         </div>
     </div>
 
-    <!-- FLOATING CTA (BLUE) -->
-    <a href="https://myblogshop.top/r/WxlcMrye/s" class="fixed bottom-8 right-8 bg-[#00314C] text-white font-bold p-5 rounded-full shadow-2xl z-50 animate-bounce flex items-center gap-3 group border-2 border-white/20">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1 2h13M9 21h6m-6 0a1 1 0 01-1-1m7 1a1 1 0 001-1" /></svg>
-        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap uppercase text-xs">Secure Discount</span>
+    <!-- FLOATING CTA -->
+    <a href="https://myblogshop.top/r/WxlcMrye/s" class="fixed bottom-8 right-8 bg-[#00314C] text-white font-black p-5 rounded-full shadow-[0_20px_50px_rgba(0,49,76,0.5)] z-50 animate-bounce flex items-center gap-3 group border-2 border-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1 2h13M9 21h6m-6 0a1 1 0 01-1-1m7 1a1 1 0 001-1" /></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap uppercase text-xs font-black">Get 50% Off</span>
     </a>
 
     <script>
         const legalData = {
-            privacy: { title: "Privacy Policy", content: `<p><strong>Effective Date: May 2023</strong></p><p>This Privacy Policy outlines how MemoGenesis collects and manages your personal information when you visit our site.</p>` },
-            disclaimer: { title: "Disclaimer", content: `<p>Information is provided "AS IS". Products are not intended to diagnose, treat, cure or prevent any disease.</p>` },
-            terms: { title: "Terms of Use", content: `<p>By using this Website, you agree to comply with our Terms of Use and Privacy Policy.</p>` },
-            refund: { title: "Returns & Refunds", content: `<p>You have a <strong>60-day period</strong> from the shipping date to try our product. Contact support@memogenesis.com for a Refund Request.</p>` },
-            shipping: { title: "Shipping Policy", content: `<p>Orders are processed in 1-2 business days. Standard domestic delivery takes 5-7 days.</p>` },
-            contact: { title: "Contact Us", content: `<p>Need help? Contact our customer service team:</p><p><strong>Email:</strong> support@memogenesis.com</p><p><strong>Order status support:</strong> (323) 410-9349</p>` }
+            privacy: { title: "Privacy Policy", content: `<p>Effective Date: May 2023</p><p>This Privacy Policy outlines how MemoGenesis collects and manages your personal information.</p>` },
+            disclaimer: { title: "Disclaimer", content: `<p>Information provided on this site is for informational purposes only. Consult a doctor before starting any supplement.</p>` },
+            terms: { title: "Terms of Use", content: `<p>By accessing this Website, you agree to comply with these terms.</p>` },
+            refund: { title: "Returns & Refunds", content: `<p>You have a 60-day period from the shipping date to try our product.</p>` },
+            shipping: { title: "Shipping Policy", content: `<p>Orders are processed in 1-2 business days.</p>` },
+            contact: { title: "Contact Us", content: `<p>Contact support@memogenesis.com for assistance.</p>` }
         };
 
         function openLegal(page) {
@@ -390,8 +405,39 @@
             document.body.style.overflow = "auto";
         }
 
-        window.onclick = (e) => { if (e.target == document.getElementById('legalModal')) closeLegal(); };
+        // Testimonial Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        function showSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.remove('active');
+                dots[i].classList.replace('bg-[#00314C]', 'bg-slate-300');
+                dots[i].classList.remove('opacity-100');
+            });
+            slides[index].classList.add('active');
+            dots[index].classList.replace('bg-slate-300', 'bg-[#00314C]');
+            dots[index].classList.add('opacity-100');
+        }
 
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                currentSlide = index;
+                showSlide(currentSlide);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        });
+
+        // Accordion
         document.querySelectorAll('.accordion-button').forEach(btn => {
             btn.addEventListener('click', () => {
                 const isActive = btn.classList.contains('active');
