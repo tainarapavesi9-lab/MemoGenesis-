@@ -17,7 +17,6 @@
         h1, h2, h3, h4, h5, h6, .logo-text {
             font-family: 'Merriweather', serif;
         }
-        /* Estilos do Acordião */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -36,7 +35,6 @@
         .bg-neural {
             background: linear-gradient(135deg, #00314C 0%, #001a29 100%);
         }
-        /* Estilos do Modal Legal */
         #legalModal {
             display: none;
             position: fixed;
@@ -69,7 +67,7 @@
 </head>
 <body class="bg-white text-black text-lg">
 
-    <!-- 1. HEADER (Texto MEMO Genesis) -->
+    <!-- HEADER -->
     <header class="bg-black text-white py-4 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 flex justify-center items-center">
             <span class="logo-text text-2xl md:text-3xl font-black tracking-tighter uppercase">
@@ -78,7 +76,7 @@
         </div>
     </header>
 
-    <!-- BARRA PROMOCIONAL -->
+    <!-- PROMO BAR -->
     <section class="py-4 px-4 bg-gradient-to-r from-[#00314C] to-[#005a8b] text-white">
         <div class="max-w-4xl mx-auto flex flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 text-center">
             <div class="flex items-center">
@@ -96,7 +94,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO PRINCIPAL (HOOK) + SELOS COLORIDOS NA MESMA LINHA -->
+    <!-- HERO SECTION -->
     <main class="px-4 py-12 md:py-20 max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
             <div class="w-full max-w-sm mx-auto md:mx-0 order-2 md:order-1">
@@ -110,14 +108,9 @@
                 
                 <div class="space-y-6 text-xl text-gray-800 leading-relaxed">
                     <p class="font-medium italic text-gray-600">It doesn’t happen all at once. It starts small. A forgotten name. A missed detail. A moment of confusion.</p>
+                    <p>At first, it feels harmless. But over time… those small moments begin to stack. You start second-guessing yourself. And slowly… Your confidence begins to fade.</p>
                 </div>
 
-                <div class="mt-8 space-y-4 text-lg border-l-4 border-red-500 pl-6 py-2">
-                    <p>At first, it feels harmless. But over time… that mental “slip” becomes more frequent. You start second-guessing yourself.</p>
-                    <p class="font-bold text-red-600">And slowly… Your confidence begins to fade.</p>
-                </div>
-
-                <!-- CTA & Price Block -->
                 <div class="mt-10 text-center bg-blue-50 p-8 rounded-3xl border border-blue-100 shadow-sm">
                     <div class="flex items-baseline justify-center gap-3">
                         <span class="text-5xl font-black text-[#00314C]">$49</span>
@@ -130,7 +123,6 @@
                         </svg>
                     </a>
                     
-                    <!-- SELOS DE QUALIDADE COLORIDOS NA MESMA LINHA -->
                     <div class="mt-8 flex justify-center items-center gap-3 md:gap-5 border-t border-blue-100 pt-6 overflow-x-auto">
                         <img src="images/imgi_10_foreign.png" alt="USA Formula" class="h-10 md:h-14 w-auto flex-shrink-0 transition-transform hover:scale-105">
                         <img src="images/imgi_8_fda.png" alt="FDA Registered" class="h-10 md:h-14 w-auto flex-shrink-0 transition-transform hover:scale-105">
@@ -143,17 +135,26 @@
         </div>
     </main>
 
-    <!-- ANALOGIA DA REDE -->
+    <!-- NETWORK SECTION -->
     <section class="bg-neural text-white py-20 px-4">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2 space-y-6">
                 <h2 class="text-3xl md:text-5xl font-bold leading-tight">Think of your brain like a network.</h2>
                 <p class="text-xl text-blue-100">
-                    A decline in how brain cells communicate and stay energized affects your ability to recall information, stay focused, and think clearly.
+                    Your brain depends on signals. Every thought… every memory… every decision… relies on how well those signals travel. 
                 </p>
-                <p class="text-xl text-blue-200 border-l-4 border-yellow-400 pl-6 italic">
-                    When that communication flow weakens, messages get lost, delayed, or distorted. That is when the fog begins to settle.
+                <div class="bg-white/10 p-6 rounded-xl border-l-4 border-yellow-400">
+                    <p class="text-xl font-bold mb-2">When signals work properly:</p>
+                    <ul class="list-disc ml-5 space-y-1 text-blue-100">
+                        <li>You recall things easily</li>
+                        <li>You stay focused</li>
+                        <li>You think clearly</li>
+                    </ul>
+                </div>
+                <p class="text-xl text-blue-200 italic">
+                    But when that signal begins to weaken… Things start to change. You may notice: Slower thinking, mental fog, and difficulty recalling information.
                 </p>
+                <p class="text-2xl font-black text-yellow-400 uppercase tracking-tighter">It’s not just “aging.” It’s a breakdown in how your brain communicates.</p>
             </div>
             <div class="md:w-1/2 grid grid-cols-2 gap-4">
                 <div class="bg-white/10 p-6 rounded-2xl border border-white/20 text-center">
@@ -176,7 +177,7 @@
         </div>
     </section>
 
-    <!-- HISTÓRIA DO JAMES (james.png) -->
+    <!-- JAMES STORY (EXPANDED) -->
     <section class="bg-white py-20 px-4">
         <div class="max-w-5xl mx-auto bg-blue-50 rounded-[3rem] shadow-xl overflow-hidden flex flex-col md:flex-row border border-blue-100">
             <div class="md:w-1/3">
@@ -185,58 +186,70 @@
             <div class="md:w-2/3 p-12">
                 <div class="flex text-yellow-500 mb-4 text-2xl">★★★★★</div>
                 <h3 class="text-3xl font-bold mb-6 text-slate-900">“I felt like I was losing my sharpness.”</h3>
-                <p class="text-xl text-gray-700 italic mb-8 leading-relaxed">
-                    "James, 61, first noticed small memory lapses. At first, it didn’t seem important. But gradually, it started affecting his daily routine. 'I felt like I was losing my sharpness.' After focusing on supporting his cognitive health with MemoGenesis, he noticed changes. 'It wasn’t overnight. But I started feeling more clear… more like myself.'"
-                </p>
-                <p class="font-black text-slate-900">James R., 61 — Retired Professional</p>
+                <div class="space-y-4 text-xl text-gray-700 leading-relaxed mb-8">
+                    <p>James, 61, had always been sharp. Quick thinking. Good memory. Clear focus. But over time, he started noticing small changes. At first, it didn’t seem like a big deal.</p>
+                    <p class="italic">"Forgetting where he placed things. Losing track of conversations. Struggling to recall simple details. 'I kept telling myself it was normal…' But deep down, it didn’t feel normal."</p>
+                    <p>It started affecting his confidence, his routines, and even the way he interacted with people. <strong>"I felt like I wasn’t fully present anymore."</strong></p>
+                    <p>That’s when he decided to take a different approach. Instead of ignoring it, he focused on supporting his cognitive health consistently with MemoGenesis. And gradually, he noticed something change. <strong>"It wasn’t overnight. But I started feeling clearer… More focused… more like myself again."</strong></p>
+                </div>
+                <p class="font-black text-slate-900 uppercase tracking-widest text-sm">James R., 61 — Retired Professional</p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DE REFERÊNCIAS CIENTÍFICAS -->
+    <!-- SCIENTIFIC REFERENCES -->
     <section class="bg-gray-50 py-16 px-4">
-        <div class="max-w-6xl mx-auto text-center">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-10 uppercase tracking-widest">Scientific References:</h3>
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">Why Brain Communication Matters?</h3>
+            <p class="text-xl text-gray-600 mb-10 leading-relaxed">
+                Researchers are focusing on brain communication because cognitive performance doesn't depend on just one factor. It depends on how well your brain systems work together. And when those systems slow down… so does everything else.
+            </p>
             <div class="flex justify-center">
                 <img src="images/scientific-references.webp" alt="Scientific References" class="w-full max-w-4xl object-contain drop-shadow-md rounded-lg" onerror="this.style.display='none'">
             </div>
         </div>
     </section>
 
-    <!-- ESTRATÉGIA EM 3 ETAPAS -->
+    <!-- 3-STEP STRATEGY -->
     <section class="py-20 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-2xl font-bold text-white bg-[#00314C] py-3 px-10 inline-block rounded-lg mb-16 uppercase tracking-widest mx-auto block w-fit">
-                The 3-Step MemoGenesis Strategy
+                THE 3-STEP MEMOGENESIS STRATEGY
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div class="text-center">
                     <div class="w-16 h-16 bg-[#00314C] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg">1</div>
                     <h4 class="text-2xl font-bold mb-4">Support</h4>
-                    <p class="text-gray-600 leading-relaxed">Nourishes brain function through foundational cellular support.</p>
+                    <p class="text-gray-600 leading-relaxed">Helps nourish essential brain functions and cellular activity at the source.</p>
                 </div>
                 <div class="text-center">
                     <div class="w-16 h-16 bg-[#00314C] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg">2</div>
                     <h4 class="text-2xl font-bold mb-4">Optimize</h4>
-                    <p class="text-gray-600 leading-relaxed">Strengthens communication pathways for better focus and neural flow.</p>
+                    <p class="text-gray-600 leading-relaxed">Supports stronger communication pathways for better focus and neural flow.</p>
                 </div>
                 <div class="text-center">
                     <div class="w-16 h-16 bg-[#00314C] text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg">3</div>
                     <h4 class="text-2xl font-bold mb-4">Maintain</h4>
-                    <p class="text-gray-600 leading-relaxed">Protects long-term cognitive performance and mental independence.</p>
+                    <p class="text-gray-600 leading-relaxed">Supports long-term cognitive performance and protects your mental independence.</p>
                 </div>
+            </div>
+            <div class="mt-16 text-center">
+                <p class="text-2xl font-bold text-[#00314C]">"Because when your brain works better internally… Everything feels easier externally."</p>
             </div>
         </div>
     </section>
 
-    <!-- GARANTIA -->
+    <!-- GUARANTEE (RESIZED IMAGE) -->
     <section class="bg-gray-100 py-20 px-4">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
-            <img src="images/imgi_6_guarantee-badge.png" alt="60 Day Money Back Guarantee" class="w-64 md:w-80 drop-shadow-xl" />
+            <div class="md:w-1/4 flex justify-center">
+                <!-- Resized guarantee badge -->
+                <img src="images/imgi_6_guarantee-badge.png" alt="Guarantee" class="w-32 md:w-48 drop-shadow-xl" />
+            </div>
             <div class="flex-1">
-                <h2 class="text-3xl font-bold text-[#00314C] mb-6 italic">Protected by Our 60-Day Guarantee</h2>
+                <h2 class="text-3xl font-bold text-[#00314C] mb-6 italic uppercase">Protected by Our 60-Day Guarantee</h2>
                 <p class="text-xl text-gray-800 leading-relaxed mb-8">
-                    The reality is… small signs are feedback. What you do with that feedback matters. Try MemoGenesis with zero risk. If you're not thrilled within 60 days, we'll refund your full purchase.
+                    You don’t need to guess if this is right for you. Try MemoGenesis as part of your daily routine. If you’re not satisfied, you can request a full refund within 60 days. No pressure. No risk.
                 </p>
                 <a href="https://myblogshop.top/r/WxlcMrye/s" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-black px-12 py-5 rounded-lg shadow-lg text-xl uppercase tracking-tighter transition-all hover:scale-105">
                     Order with 100% Security
@@ -245,10 +258,10 @@
         </div>
     </section>
 
-    <!-- FAQ (5 Perguntas Estratégicas) -->
+    <!-- FAQ -->
     <section class="bg-white py-20 px-4">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12 text-[#00314C]">Common Questions About MEMO Genesis</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#00314C]">Frequently Asked Questions</h2>
             <div class="space-y-4">
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
@@ -256,34 +269,34 @@
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Absolutely. MemoGenesis is formulated with natural, carefully selected ingredients and is produced in a facility that follows strict quality standards to ensure safety for daily supplementation.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">MemoGenesis is designed with carefully selected ingredients and produced under strict quality standards to ensure a safe experience for consistent daily use.</p>
                     </div>
                 </div>
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>How long does it take to see results?</span>
+                        <span>How long does it take to notice results?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Individual results vary, but many users report improved clarity and focus within 2-4 weeks. For long-term cognitive support, we recommend taking it consistently for 3 to 6 months.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">While everyone is different, many users report gradual improvements in clarity and memory sharpness with consistent use over time.</p>
                     </div>
                 </div>
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>How should I take MemoGenesis for maximum benefit?</span>
+                        <span>How should I take MemoGenesis?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Take one capsule daily with a glass of water, preferably in the morning with a meal to optimize absorption and support your brain throughout the day.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">For best results, simply follow the daily instructions included with your order. Consistency is key to supporting brain pathways.</p>
                     </div>
                 </div>
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>Is this a one-time payment or a subscription?</span>
+                        <span>Is this a one-time purchase?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Your order today is a one-time payment. There are no hidden fees, automatic renewals, or recurring charges associated with your purchase.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">Yes. This is a one-time purchase with no subscriptions, recurring fees, or hidden charges.</p>
                     </div>
                 </div>
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
@@ -292,20 +305,21 @@
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">We offer a 60-day, 100% money-back guarantee. If you're not thrilled with the results, simply contact our support team for a full refund—no questions asked.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">You are fully covered by our 60-day satisfaction guarantee. If you're not thrilled, just contact us for a full refund.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FECHO E CTA FINAL -->
+    <!-- FINAL CTA -->
     <section class="bg-neural py-24 px-4 text-center text-white">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-black mb-10 uppercase">Don't wait for the feedback to get louder.</h2>
+            <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-tight">DON’T WAIT FOR THE SIGNALS TO GET LOUDER.</h2>
+            <p class="text-xl text-blue-100 mb-12">Small changes don’t stay small forever. The earlier you support your brain… The better it can support you.</p>
             <img src="images/memogenesis.png" alt="Bundle Offer" class="mx-auto w-72 mb-12 drop-shadow-2xl">
             <a href="https://myblogshop.top/r/WxlcMrye/s" class="bg-green-600 hover:bg-green-700 text-white font-black px-12 py-7 rounded-full text-2xl shadow-2xl inline-flex items-center gap-4 transform hover:scale-110 transition-all uppercase tracking-tight">
-                Order MemoGenesis Now
+                ORDER MEMOGENESIS NOW
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -313,7 +327,7 @@
         </div>
     </section>
 
-    <!-- RODAPÉ GOOGLE ADS COMPLIANCE -->
+    <!-- FOOTER -->
     <footer class="bg-slate-950 text-gray-500 py-16 px-4 text-center">
         <div class="max-w-4xl mx-auto">
             <p class="text-xs mb-6 uppercase tracking-widest text-gray-600 font-bold">Authorized Distributor of MemoGenesis™</p>
@@ -335,7 +349,7 @@
         </div>
     </footer>
 
-    <!-- MODAL LEGAL -->
+    <!-- LEGAL MODAL -->
     <div id="legalModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeLegal()">&times;</span>
@@ -344,7 +358,7 @@
         </div>
     </div>
 
-    <!-- BOTÃO FLUTUANTE AZUL (#00314C) -->
+    <!-- FLOATING CTA -->
     <a href="https://myblogshop.top/r/WxlcMrye/s" class="fixed bottom-8 right-8 bg-[#00314C] text-white font-bold p-5 rounded-full shadow-2xl z-50 animate-bounce flex items-center gap-3 group border-2 border-white/20">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1 2h13M9 21h6m-6 0a1 1 0 01-1-1m7 1a1 1 0 001-1" /></svg>
         <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap uppercase text-xs">Secure Discount</span>
@@ -352,30 +366,12 @@
 
     <script>
         const legalData = {
-            privacy: {
-                title: "Privacy Policy",
-                content: `<p><strong>Effective Date: May 2023</strong></p><p>This Privacy Policy outlines how MemoGenesis ("we" or "us") collects and manages your personal information when you visit our site. We collect data provided voluntarily (name, email) and automatically (cookies) to improve your experience.</p>`
-            },
-            disclaimer: {
-                title: "Disclaimer",
-                content: `<p>Information is provided "AS IS". Products are not intended to diagnose, treat, cure or prevent any disease. Always consult your physician before starting any new supplement.</p>`
-            },
-            terms: {
-                title: "Terms of Use",
-                content: `<p>By using this Website, you agree to comply with our Terms of Use and Privacy Policy. The Website is intended for users who are at least 18 years old.</p>`
-            },
-            refund: {
-                title: "Returns & Refunds",
-                content: `<p>You have a <strong>60-day period</strong> from the shipping date to try our product. If you find it doesn't meet expectations, contact support@memogenesis.com for a Refund Request.</p>`
-            },
-            shipping: {
-                title: "Shipping Policy",
-                content: `<p>Orders are processed in 1-2 business days. Standard domestic delivery takes 5-7 days. International shipping can take 4-6 weeks.</p>`
-            },
-            contact: {
-                title: "Contact Us",
-                content: `<p>Need help? Contact our customer service team:</p><p><strong>Email:</strong> support@memogenesis.com</p><p><strong>Order status support:</strong> (323) 410-9349</p>`
-            }
+            privacy: { title: "Privacy Policy", content: `<p><strong>Effective Date: May 2023</strong></p><p>This Privacy Policy outlines how MemoGenesis ("we" or "us") collects and manages your personal information when you visit our site. We collect data provided voluntarily (name, email) and automatically (cookies) to improve your experience.</p>` },
+            disclaimer: { title: "Disclaimer", content: `<p>Information is provided "AS IS". Products are not intended to diagnose, treat, cure or prevent any disease. Always consult your physician before starting any new supplement.</p>` },
+            terms: { title: "Terms of Use", content: `<p>By using this Website, you agree to comply with our Terms of Use and Privacy Policy. The Website is intended for users who are at least 18 years old.</p>` },
+            refund: { title: "Returns & Refunds", content: `<p>You have a <strong>60-day period</strong> from the shipping date to try our product. If you find it doesn't meet expectations, contact support@memogenesis.com for a Refund Request.</p>` },
+            shipping: { title: "Shipping Policy", content: `<p>Orders are processed in 1-2 business days. Standard domestic delivery takes 5-7 days. International shipping can take 4-6 weeks.</p>` },
+            contact: { title: "Contact Us", content: `<p>Need help? Contact our customer service team:</p><p><strong>Email:</strong> support@memogenesis.com</p><p><strong>Order status support:</strong> (323) 410-9349</p>` }
         };
 
         function openLegal(page) {
@@ -393,11 +389,7 @@
             document.body.style.overflow = "auto";
         }
 
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('legalModal')) {
-                closeLegal();
-            }
-        };
+        window.onclick = function(event) { if (event.target == document.getElementById('legalModal')) closeLegal(); };
 
         const accordionButtons = document.querySelectorAll('.accordion-button');
         accordionButtons.forEach(button => {
