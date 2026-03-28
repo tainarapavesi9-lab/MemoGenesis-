@@ -24,7 +24,7 @@
             transition: max-height 0.3s ease-out;
         }
         .accordion-button.active + .accordion-content {
-            max-height: 800px; /* Expandido para acomodar respostas longas */
+            max-height: 800px;
             transition: max-height 0.5s ease-in;
         }
         .accordion-button .arrow {
@@ -36,7 +36,7 @@
         .bg-neural {
             background: linear-gradient(135deg, #00314C 0%, #001a29 100%);
         }
-        /* Modal Styles */
+        /* Estilos do Modal Legal */
         #legalModal {
             display: none;
             position: fixed;
@@ -72,7 +72,7 @@
 </head>
 <body class="bg-white text-black text-lg">
 
-    <!-- 1. HEADER (Cabeçalho de texto) -->
+    <!-- 1. HEADER (Texto MEMO Genesis) -->
     <header class="bg-black text-white py-4 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 flex justify-center items-center">
             <span class="logo-text text-2xl md:text-3xl font-black tracking-tighter uppercase">
@@ -81,7 +81,7 @@
         </div>
     </header>
 
-    <!-- PROMO BAR (Frete removido como solicitado) -->
+    <!-- BARRA PROMOCIONAL -->
     <section class="py-4 px-4 bg-gradient-to-r from-[#00314C] to-[#005a8b] text-white">
         <div class="max-w-4xl mx-auto flex flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 text-center">
             <div class="flex items-center">
@@ -99,7 +99,7 @@
         </div>
     </section>
 
-    <!-- 1. HOOK SECTION + SELOS ALINHADOS -->
+    <!-- SEÇÃO PRINCIPAL (HOOK) + SELOS NA MESMA LINHA -->
     <main class="px-4 py-12 md:py-20 max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
             <div class="w-full max-w-sm mx-auto md:mx-0 order-2 md:order-1">
@@ -120,7 +120,7 @@
                     <p class="font-bold text-red-600">And slowly… Your confidence begins to fade.</p>
                 </div>
 
-                <!-- CTA & Price Block -->
+                <!-- Bloco de Preço e Selos Alinhados -->
                 <div class="mt-10 text-center bg-blue-50 p-8 rounded-3xl border border-blue-100 shadow-sm">
                     <div class="flex items-baseline justify-center gap-3">
                         <span class="text-5xl font-black text-[#00314C]">$49</span>
@@ -133,20 +133,20 @@
                         </svg>
                     </a>
                     
-                    <!-- SELOS NA PRIMEIRA SEÇÃO (Uma linha só) -->
-                    <div class="mt-8 flex justify-center items-center gap-4 border-t border-blue-100 pt-6">
-                        <img src="images/imgi_10_foreign.png" alt="USA" class="h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-                        <img src="images/imgi_8_fda.png" alt="FDA" class="h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-                        <img src="images/imgi_7_gmp.png" alt="GMP" class="h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-                        <img src="images/imgi_9_nat.png" alt="Natural" class="h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-                        <img src="images/imgi_11_gmo.png" alt="GMO" class="h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <!-- SELOS DE QUALIDADE NA MESMA LINHA -->
+                    <div class="mt-8 flex justify-center items-center gap-4 border-t border-blue-100 pt-6 overflow-x-auto">
+                        <img src="images/imgi_10_foreign.png" alt="USA" class="h-10 md:h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
+                        <img src="images/imgi_8_fda.png" alt="FDA" class="h-10 md:h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
+                        <img src="images/imgi_7_gmp.png" alt="GMP" class="h-10 md:h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
+                        <img src="images/imgi_9_nat.png" alt="Natural" class="h-10 md:h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
+                        <img src="images/imgi_11_gmo.png" alt="GMO" class="h-10 md:h-12 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- ANALOGIA & DISCOVERY -->
+    <!-- ANALOGIA DA REDE -->
     <section class="bg-neural text-white py-20 px-4">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2 space-y-6">
@@ -179,11 +179,11 @@
         </div>
     </section>
 
-    <!-- HISTÓRIA DO JAMES -->
+    <!-- HISTÓRIA DO JAMES (Atualizada com james.png) -->
     <section class="bg-white py-20 px-4">
         <div class="max-w-5xl mx-auto bg-blue-50 rounded-[3rem] shadow-xl overflow-hidden flex flex-col md:flex-row border border-blue-100">
             <div class="md:w-1/3">
-                <img src="images/james-story.webp" alt="James Story" class="h-full w-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=James,+61'">
+                <img src="images/james.png" alt="James Story" class="h-full w-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=James+Photo'">
             </div>
             <div class="md:w-2/3 p-12">
                 <div class="flex text-yellow-500 mb-4 text-2xl">★★★★★</div>
@@ -196,8 +196,18 @@
         </div>
     </section>
 
-    <!-- 3-STEP SYSTEM -->
-    <section class="py-20 px-4 bg-gray-50">
+    <!-- SEÇÃO DE REFERÊNCIAS CIENTÍFICAS (ADICIONADA) -->
+    <section class="bg-gray-50 py-16 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-10 uppercase tracking-widest">Scientific References:</h3>
+            <div class="flex justify-center">
+                <img src="images/scientific-references.webp" alt="Scientific References" class="w-full max-w-4xl object-contain drop-shadow-md rounded-lg" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTRATÉGIA EM 3 ETAPAS -->
+    <section class="py-20 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-2xl font-bold text-white bg-[#00314C] py-3 px-10 inline-block rounded-lg mb-16 uppercase tracking-widest mx-auto block w-fit">
                 The 3-Step MemoGenesis Strategy
@@ -222,8 +232,8 @@
         </div>
     </section>
 
-    <!-- GUARANTEE -->
-    <section class="bg-white py-20 px-4">
+    <!-- GARANTIA -->
+    <section class="bg-gray-100 py-20 px-4">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
             <img src="images/imgi_6_guarantee-badge.png" alt="Guarantee" class="w-64 md:w-80 drop-shadow-xl" />
             <div class="flex-1">
@@ -238,66 +248,75 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION (5 Estratégicas) -->
-    <section class="bg-gray-50 py-20 px-4">
+    <!-- FAQ (5 Perguntas Estratégicas) -->
+    <section class="bg-white py-20 px-4">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-12 text-[#00314C]">Common Questions About MEMO Genesis</h2>
             <div class="space-y-4">
-                <!-- Pergunta 1 -->
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
                         <span>Is MemoGenesis safe for daily use?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Absolutely. MemoGenesis is formulated with carefully selected, natural ingredients. It is produced in a facility that follows strict quality standards and rigorous safety protocols to ensure every capsule is safe for consistent daily use.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">Absolutely. MemoGenesis is formulated with natural, carefully selected ingredients and is produced in a facility that follows strict quality standards to ensure safety for daily supplementation.</p>
                     </div>
                 </div>
-                <!-- Pergunta 2 -->
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
                         <span>How long does it take to see results?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">While every individual is unique, many users report feeling a subtle difference in clarity and focus within the first 2-4 weeks of consistent use. For maximum benefits and long-term cognitive support, we recommend taking the product for at least 3 to 6 months.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">Individual results vary, but many users report improved clarity and focus within 2-4 weeks. For long-term cognitive support, we recommend taking it consistently for 3 to 6 months.</p>
                     </div>
                 </div>
-                <!-- Pergunta 3 -->
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
                         <span>How should I take MemoGenesis for maximum benefit?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">For best results, take one capsule daily with a large glass of water. Ideally, consume it in the morning alongside a meal to optimize nutrient absorption and support your brain's communication pathways throughout the entire day.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">Take one capsule daily with a glass of water, preferably in the morning with a meal to optimize absorption and support your brain throughout the day.</p>
                     </div>
                 </div>
-                <!-- Pergunta 4 -->
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
                         <span>Is this a one-time payment or a subscription?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">Your order today is a one-time payment only. There are no hidden fees, recurring charges, or automatic subscriptions. You will only ever be billed for the products you explicitly choose to order.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">Your order today is a one-time payment. There are no hidden fees, automatic renewals, or recurring charges associated with your purchase.</p>
                     </div>
                 </div>
-                <!-- Pergunta 5 -->
                 <div class="border rounded-xl bg-white shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-6 flex justify-between items-center font-bold text-lg hover:bg-gray-50">
-                        <span>What if MemoGenesis doesn't work for me?</span>
+                        <span>What if it doesn't work for me?</span>
                         <svg class="arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content">
-                        <p class="p-6 pt-0 text-gray-700 border-t">We are so confident in MemoGenesis that we offer a 60-day, 100% money-back guarantee. If you are not thrilled with your progress or your experience, simply contact our support team within 60 days of your purchase for a full refund—no questions asked.</p>
+                        <p class="p-6 pt-0 text-gray-700 border-t">We offer a 60-day, 100% money-back guarantee. If you're not thrilled with the results, simply contact our support team for a full refund—no questions asked.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER WITH GOOGLE ADS COMPLIANCE -->
+    <!-- FECHO E CTA FINAL -->
+    <section class="bg-neural py-24 px-4 text-center text-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black mb-10 uppercase">Don't wait for the feedback to get louder.</h2>
+            <img src="images/memogenesis.png" alt="Bundle Offer" class="mx-auto w-72 mb-12 drop-shadow-2xl">
+            <a href="https://myblogshop.top/r/WxlcMrye/s" class="bg-green-600 hover:bg-green-700 text-white font-black px-12 py-7 rounded-full text-2xl shadow-2xl inline-flex items-center gap-4 transform hover:scale-110 transition-all uppercase tracking-tight">
+                Order MemoGenesis Now
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- RODAPÉ GOOGLE ADS COMPLIANCE -->
     <footer class="bg-slate-950 text-gray-500 py-16 px-4 text-center">
         <div class="max-w-4xl mx-auto">
             <p class="text-xs mb-6 uppercase tracking-widest text-gray-600 font-bold">Authorized Distributor of MemoGenesis™</p>
@@ -319,7 +338,7 @@
         </div>
     </footer>
 
-    <!-- LEGAL MODAL OVERLAY -->
+    <!-- MODAL LEGAL -->
     <div id="legalModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeLegal()">&times;</span>
@@ -328,38 +347,37 @@
         </div>
     </div>
 
-    <!-- 4. Floating CTA (Blue #00314C) -->
+    <!-- BOTÃO FLUTUANTE AZUL -->
     <a href="https://myblogshop.top/r/WxlcMrye/s" class="fixed bottom-8 right-8 bg-[#00314C] text-white font-bold p-5 rounded-full shadow-2xl z-50 animate-bounce flex items-center gap-3 group border-2 border-white/20">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1 2h13M9 21h6m-6 0a1 1 0 01-1-1m7 1a1 1 0 001-1" /></svg>
         <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap uppercase text-xs">Secure Discount</span>
     </a>
 
     <script>
-        // Modal Logic
         const legalData = {
             privacy: {
                 title: "Privacy Policy",
-                content: `<p><strong>Effective Date: May 2023</strong></p><p>This Privacy Policy outlines how MemoGenesis ("we" or "us") collects, uses, and manages your personal information when you visit our website. It details the types of information we collect from you during your online interaction and how we utilize that information.</p><p><strong>Data Collection:</strong> We collect personal information you provide voluntarily (name, email, address) and automated data (cookies, IP addresses) to enhance your browsing experience.</p>`
+                content: `<p><strong>Effective Date: May 2023</strong></p><p>This Privacy Policy outlines how MemoGenesis ("we" or "us") collects and manages your personal information when you visit our site. We collect data provided voluntarily (name, email) and automatically (cookies) to improve your experience.</p>`
             },
             disclaimer: {
                 title: "Disclaimer",
-                content: `<p>The entire contents of the Site are protected by international copyright and trademark laws. Publications, products, content or services referenced herein are the exclusive trademarks of MemoGenesis.</p><p>Information is provided "AS IS" without warranties. Products are not intended to diagnose, treat, cure or prevent any disease.</p>`
+                content: `<p>Information is provided "AS IS". Products are not intended to diagnose, treat, cure or prevent any disease. Always consult your physician before starting any new supplement.</p>`
             },
             terms: {
                 title: "Terms of Use",
-                content: `<p>This agreement is established between you and MemoGenesis. By accessing the Website, you acknowledge and agree to comply with these terms and our Privacy Policy.</p><p>The Website is intended for users who are at least 18 years old. We reserve the right to modify these terms at any time.</p>`
+                content: `<p>By using this Website, you agree to comply with our Terms of Use and Privacy Policy. The Website is intended for users who are at least 18 years old.</p>`
             },
             refund: {
-                title: "Refund & Returns Policy",
-                content: `<p>You have a generous <strong>60-day period</strong> from the date your order is shipped to try our product. If you find it doesn't meet expectations, contact support@memogenesis.com for a Refund Request.</p><p><strong>Returns Address:</strong> 19655 E 35th Dr #100, Aurora, CO 80011.</p>`
+                title: "Returns & Refunds",
+                content: `<p>You have a <strong>60-day period</strong> from the shipping date to try our product. If you find it doesn't meet expectations, contact support@memogenesis.com for a Refund Request.</p>`
             },
             shipping: {
                 title: "Shipping Policy",
-                content: `<p>Orders are processed within 1-2 business days. Standard domestic delivery is 5-7 days. International shipping may take 4-6 weeks.</p><p>We ship Monday-Friday. MemoGenesis is not responsible for lost or stolen packages confirmed as delivered by tracking numbers.</p>`
+                content: `<p>Orders are processed in 1-2 business days. Standard domestic delivery takes 5-7 days. International shipping can take 4-6 weeks.</p>`
             },
             contact: {
                 title: "Contact Us",
-                content: `<p>Do you have questions or need help? Please reach out to our customer service team:</p><p><strong>Email:</strong> support@memogenesis.com</p><p><strong>Order Status Support:</strong> (323) 410-9349</p><p>Agents reply within 48 hours or less.</p>`
+                content: `<p>Need help? Contact our customer service team:</p><p><strong>Email:</strong> support@memogenesis.com</p><p><strong>Order status support:</strong> (323) 410-9349</p>`
             }
         };
 
@@ -367,7 +385,6 @@
             const modal = document.getElementById('legalModal');
             const title = document.getElementById('modalTitle');
             const body = document.getElementById('modalBody');
-            
             title.innerText = legalData[page].title;
             body.innerHTML = legalData[page].content;
             modal.style.display = "block";
@@ -385,7 +402,6 @@
             }
         };
 
-        // Accordion Logic
         const accordionButtons = document.querySelectorAll('.accordion-button');
         accordionButtons.forEach(button => {
             button.addEventListener('click', () => {
