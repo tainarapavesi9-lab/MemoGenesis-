@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MEMO Genesis - Cognitive Support Formula</title>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Favicon de Cérebro em SVG (Data URI) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300314C'%3E%3Cpath d='M18 10.5c0-1.93-1.57-3.5-3.5-3.5-.17 0-.34.02-.5.05.02-.18.05-.37.05-.55 0-2.48-2.02-4.5-4.5-4.5S5 4.02 5 6.5c0 .18.03.37.05.55-.16-.03-.33-.05-.5-.05C2.57 7 1 8.57 1 10.5c0 1.55 1.01 2.86 2.4 3.32-.14.36-.21.75-.21 1.18 0 1.93 1.57 3.5 3.5 3.5.43 0 .82-.07 1.18-.21.46 1.39 1.77 2.4 3.32 2.4 1.93 0 3.5-1.57 3.5-3.5 0-.43-.07-.82-.21-1.18 1.39-.46 2.4-1.77 2.4-3.32z'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,8 +58,8 @@
 
     <!-- HEADER -->
     <header class="bg-black text-white py-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
-        <div class="container mx-auto px-4 flex justify-center items-center">
-            <span class="logo-text text-xl md:text-2xl font-black tracking-tighter uppercase text-center">
+        <div class="container mx-auto px-4 flex justify-center items-center text-center">
+            <span class="logo-text text-xl md:text-2xl font-black tracking-tighter uppercase">
                 MEMO <span class="text-[#005a8b]">Genesis</span>
             </span>
         </div>
@@ -219,10 +220,10 @@
         </div>
     </section>
 
-    <!-- INGREDIENTS SECTION (Corrected Alignment) -->
+    <!-- INGREDIENTS SECTION -->
     <section class="py-20 px-4 bg-slate-50 border-y border-slate-200">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-16 uppercase tracking-tighter">Pure Ingredients. Focused Results.</h2>
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-16 uppercase tracking-tighter text-center">Pure Ingredients. Focused Results.</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-stretch">
                 <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 flex items-center justify-center min-h-[140px]">
                     <h5 class="font-black text-[#00314C] text-base md:text-lg uppercase tracking-widest text-center">Neuro-Nutrients</h5>
@@ -248,10 +249,10 @@
                 <p class="text-slate-400 text-xs uppercase tracking-widest font-bold">*Resultados individuais podem variar.</p>
             </div>
 
-            <!-- James with Photo -->
+            <!-- James with Photo (Static) -->
             <div class="bg-blue-50 rounded-[3rem] shadow-xl overflow-hidden flex flex-col md:flex-row items-center border border-blue-100 mb-16 text-left">
                 <div class="md:w-1/3 h-[400px] md:h-auto self-stretch">
-                    <img src="images/james.png" alt="James holding bottle" class="w-full h-full object-cover object-top">
+                    <img src="images/james.png" alt="James Story" class="w-full h-full object-cover object-top">
                 </div>
                 <div class="md:w-2/3 p-10 md:p-16">
                     <div class="flex text-yellow-500 mb-6 text-2xl">⭐⭐⭐⭐⭐</div>
@@ -263,7 +264,7 @@
                 </div>
             </div>
 
-            <!-- Additional Reviews: Auto Carousel on Mobile -->
+            <!-- Additional Reviews: Grid on Desktop, Auto Carousel on Mobile -->
             <div id="textTestimonials" class="mobile-carousel-container md:grid md:grid-cols-3 md:gap-8 text-left">
                 <div class="mobile-carousel-item bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 h-full flex flex-col">
                     <div class="text-yellow-500 mb-4 text-sm">⭐⭐⭐⭐⭐</div>
@@ -304,56 +305,30 @@
         </div>
     </section>
 
-    <!-- 3-STEP SYSTEM -->
-    <section class="py-24 px-4 bg-white">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-black text-white bg-[#00314C] py-4 px-12 inline-block rounded-xl mb-16 uppercase tracking-tighter shadow-lg">
-                The 3-Step Strategy
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-center">
-                    <div class="w-16 h-16 bg-[#00314C] text-white rounded-full flex items-center justify-center mb-6 font-black text-2xl">1</div>
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Support</h4>
-                    <p class="text-gray-600 text-sm">Helps nourish essential brain functions at the source.</p>
-                </div>
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-center">
-                    <div class="w-16 h-16 bg-[#00314C] text-white rounded-full flex items-center justify-center mb-6 font-black text-2xl">2</div>
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Optimize</h4>
-                    <p class="text-gray-600 text-sm">Supports communication pathways for better clarity.</p>
-                </div>
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-center">
-                    <div class="w-16 h-16 bg-[#00314C] text-white rounded-full flex items-center justify-center mb-6 font-black text-2xl">3</div>
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Maintain</h4>
-                    <p class="text-gray-600 text-sm">Supports long-term cognitive performance and independence.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- NEW SECTION: SCIENCE BEHIND MEMOGENESIS -->
-    <section class="py-24 px-4 bg-slate-50 border-y border-slate-200">
-        <div class="max-w-4xl mx-auto text-center">
+    <section class="py-24 px-4 bg-white border-y border-slate-100 text-center">
+        <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 uppercase tracking-tighter italic">The Science of MemoGenesis</h2>
-            <p class="text-slate-600 text-lg mb-16 leading-relaxed">MemoGenesis was developed using carefully selected ingredients known for their role in supporting brain health at the cellular level.</p>
+            <p class="text-slate-600 text-lg mb-16 leading-relaxed max-w-3xl mx-auto">MemoGenesis was developed using carefully selected ingredients known for their role in supporting brain health at the cellular level.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-sm">
                     <h4 class="font-black text-[#00314C] text-lg uppercase mb-2">Ginkgo Biloba</h4>
                     <p class="text-slate-500 text-sm">Supports healthy blood flow and cognitive performance.</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-sm">
                     <h4 class="font-black text-[#00314C] text-lg uppercase mb-2">Bacopa Monnieri</h4>
                     <p class="text-slate-500 text-sm">Supports memory, learning, and mental clarity.</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-sm">
                     <h4 class="font-black text-[#00314C] text-lg uppercase mb-2">Phosphatidylserine</h4>
                     <p class="text-slate-500 text-sm">Supports brain cell communication and function.</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-sm">
                     <h4 class="font-black text-[#00314C] text-lg uppercase mb-2">Huperzine A</h4>
                     <p class="text-slate-500 text-sm">Supports memory retention and focus.</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm transition-all hover:shadow-md">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 shadow-sm">
                     <h4 class="font-black text-[#00314C] text-lg uppercase mb-2">L-Theanine</h4>
                     <p class="text-slate-500 text-sm">Supports calm focus and mental clarity.</p>
                 </div>
@@ -366,14 +341,14 @@
     </section>
 
     <!-- GUARANTEE -->
-    <section class="bg-white py-20 px-4">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left bg-gray-50 p-10 md:p-16 rounded-[4rem] shadow-xl border border-slate-100">
+    <section class="bg-gray-100 py-20 px-4">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left bg-white p-10 md:p-16 rounded-[4rem] shadow-xl border border-slate-100">
             <div class="w-32 md:w-44 flex-shrink-0">
                 <img src="images/imgi_6_guarantee-badge.png" alt="60 Day Guarantee" class="w-full drop-shadow-xl" />
             </div>
             <div class="flex-1">
                 <h2 class="text-3xl font-black text-[#00314C] mb-6 uppercase tracking-tighter leading-tight italic">Protected by our <br>60-Day Guarantee</h2>
-                <p class="text-xl text-slate-600 leading-relaxed mb-8 italic">Try MemoGenesis for yourself. If you’re not satisfied, request a full refund. No pressure. No risk.</p>
+                <p class="text-xl text-slate-600 leading-relaxed mb-8 italic">Try MemoGenesis for yourself. If you’re not satisfied for any reason, request a full refund. No pressure. No risk.</p>
                 <a href="https://myblogshop.top/r/WxlcMrye/s" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-black px-12 py-5 rounded-2xl shadow-lg uppercase transition-all hover:scale-105">
                     Order Risk-Free Now
                 </a>
@@ -386,6 +361,7 @@
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl font-black text-center mb-16 text-slate-900 uppercase tracking-tighter italic">Frequently Asked Questions</h2>
             <div class="space-y-6">
+                <!-- 1 -->
                 <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
                         <span class="text-[#00314C]">Is MemoGenesis safe for daily use?</span>
@@ -393,27 +369,31 @@
                     </button>
                     <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100 font-medium">MemoGenesis is designed with natural ingredients and produced under strict standards for daily use.</p></div>
                 </div>
+                <!-- 2 -->
                 <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
-                        <span class="text-[#00314C]">How long does it take?</span>
+                        <span class="text-[#00314C]">How long does it take to notice results?</span>
                         <svg class="arrow w-6 h-6 text-[#00314C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100 font-medium">Many users report gradual improvements within 2-4 weeks. For maximum support, a 3 to 6-month protocol is recommended.</p></div>
                 </div>
+                <!-- 3 -->
                 <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
-                        <span class="text-[#00314C]">How do I take it?</span>
+                        <span class="text-[#00314C]">How should I take MemoGenesis?</span>
                         <svg class="arrow w-6 h-6 text-[#00314C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100 font-medium">Follow the instructions: one capsule with water each morning alongside a meal is typically best for absorption.</p></div>
                 </div>
+                <!-- 4 -->
                 <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
-                        <span class="text-[#00314C]">Is this a subscription?</span>
+                        <span class="text-[#00314C]">Is this a one-time purchase or a subscription?</span>
                         <svg class="arrow w-6 h-6 text-[#00314C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100 font-medium">No. One-time payment only. No hidden subscriptions or recurring charges.</p></div>
+                    <div class="accordion-content"><p class="p-8 pt-0 text-slate-600 border-t border-slate-100 font-medium">Your order today is a one-time payment. There are no hidden subscriptions or recurring charges.</p></div>
                 </div>
+                <!-- 5 -->
                 <div class="border-2 border-slate-50 rounded-[2rem] bg-slate-50/50 shadow-sm overflow-hidden">
                     <button class="accordion-button w-full text-left p-8 flex justify-between items-center font-bold text-xl">
                         <span class="text-[#00314C]">What if MemoGenesis doesn't work for me?</span>
@@ -428,8 +408,8 @@
     <!-- FINAL CTA -->
     <section class="bg-neural py-32 px-4 text-center text-white">
         <div class="max-w-4xl mx-auto relative z-10 text-center">
-            <h2 class="text-4xl md:text-7xl font-black mb-8 uppercase tracking-tighter italic">DON’T WAIT FOR THE SIGNALS TO GET LOUDER.</h2>
-            <p class="text-xl md:text-2xl text-blue-100 mb-12 max-w-2xl mx-auto font-light italic">Small changes don’t stay small forever.</p>
+            <h2 class="text-4xl md:text-7xl font-black mb-8 uppercase tracking-tighter italic text-center">DON’T WAIT FOR THE SIGNALS TO GET LOUDER.</h2>
+            <p class="text-xl md:text-2xl text-blue-100 mb-12 max-w-2xl mx-auto font-light italic">Small changes don’t stay small forever. The earlier you support your brain… the better it can support you.</p>
             <div class="relative inline-block mb-12 group">
                 <img src="images/memogenesis.png" alt="Buy MemoGenesis" class="w-80 md:w-96 drop-shadow-2xl transition-transform group-hover:scale-105">
                 <div class="absolute -bottom-6 -right-6 bg-yellow-400 text-black px-6 py-3 rounded-2xl font-black text-xl shadow-xl transform rotate-3 italic">SAVE $780</div>
@@ -468,7 +448,7 @@
         </div>
     </div>
 
-    <!-- FLOATING CTA -->
+    <!-- FLOATING CTA (BLUE #00314C) -->
     <a href="https://myblogshop.top/r/WxlcMrye/s" class="fixed bottom-8 right-8 bg-[#00314C] text-white font-black p-5 rounded-full shadow-[0_20px_50px_rgba(0,49,76,0.5)] z-50 animate-bounce flex items-center gap-3 group border-2 border-white/20">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4(5M7 13l-1 2h13M9 21h6m-6 0a1 1 0 01-1-1m7 1a1 1 0 001-1" /></svg>
         <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap uppercase text-xs font-black">Get 73% Off</span>
@@ -477,11 +457,11 @@
     <script>
         const legalData = {
             privacy: { title: "Privacy Policy", content: `<p>Privacy Policy outlines data handling processes.</p>` },
-            disclaimer: { title: "Disclaimer", content: `<p>Information provided is for informational purposes only. Consult a doctor before starting any supplement.</p>` },
-            terms: { title: "Terms of Use", content: `<p>By using this site, you agree to comply with our Terms and Privacy Policy.</p>` },
-            refund: { title: "Returns & Refunds", content: `<p>You have a 60-day period from the shipping date. Contact support@memogenesis.com for a refund request.</p>` },
-            shipping: { title: "Shipping Policy", content: `<p>Orders are processed in 1-2 business days. Standard delivery is 5-7 days.</p>` },
-            contact: { title: "Contact Us", content: `<p>Email: support@memogenesis.com | Phone: (323) 410-9349</p>` }
+            disclaimer: { title: "Disclaimer", content: `<p>Information provided is for informational purposes only.</p>` },
+            terms: { title: "Terms of Use", content: `<p>By using this site, you agree to comply with our Terms.</p>` },
+            refund: { title: "Returns & Refunds", content: `<p>You have a 60-day period from shipping.</p>` },
+            shipping: { title: "Shipping Policy", content: `<p>Standard delivery is 5-7 days.</p>` },
+            contact: { title: "Contact Us", content: `<p>Email: support@memogenesis.com</p>` }
         };
 
         function openLegal(page) {
